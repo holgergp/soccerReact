@@ -22,7 +22,7 @@ body {
 
 
 .tabellenfuehrerClass {
-  background-color: #52ff3d;
+  background-color: #7eff91;
 }
 .championsLeagueClass {
   background-color: #0000FF;
@@ -30,10 +30,10 @@ body {
 .europaLeagueClass {
   background-color: #ff3a3a;
 }
-.relegationClass {
-  background-color: rgb(248, 253, 255);
-}
 .mittelfeldClass {
+  background-color: rgb(132, 137, 139);
+}
+.relegationClass {
   background-color: rgb(255, 157, 43);
 }
 .abstiegClass {
