@@ -15,7 +15,7 @@ class AppComponent extends React.Component {
   render() {
     return (
       <div className="index">
-        <div className="container-fluid">
+        <div className="container">
           <div className="row">
             <LeagueTable  />
           </div>
