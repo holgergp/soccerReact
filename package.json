@@ -60,6 +60,7 @@
     "react": "^0.14.0",
     "react-dnd": "^2.0.0",
     "react-dnd-html5-backend": "^2.0.0",
-    "react-dom": "^0.14.0"
+    "react-dom": "^0.14.0",
+    "express": ">=4.9.5"
   }
 }
