@@ -1,12 +1,12 @@
 import React, { PropTypes } from 'react';
-import Teams from './Teams';
+import Positions from './Positions';
 import { DragDropContext } from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
 
 var LeagueTable = React.createClass({
   getInitialState: function () {
     return {
-      teams: TEAMLIST,
+      positions: SAMPLE_LEAGUE_TABLE,
       newTeam: {}
     };
   },
@@ -14,7 +14,7 @@ var LeagueTable = React.createClass({
   render: function () {
     return (
       <div className="col-md-6">
-        <Teams teams={this.state.teams}/>
+        <Positions positions={this.state.positions}/>
 
       </div>
     );
@@ -22,75 +22,134 @@ var LeagueTable = React.createClass({
 });
 
 
-var TEAMLIST = [
+var SAMPLE_LEAGUE_TABLE = [
   {
-    name: 'Borussia Mönchengladbach',
-    id: 'BMG'
+    position: 1,
+    team: {
+      name: 'Borussia Mönchengladbach',
+      id: 'BMG'
+    }
   },
   {
-    name: 'Borussia Dortmund',
-    id: 'BVB'
+    position: 2,
+    team: {
+      name: 'Borussia Dortmund',
+      id: 'BVB'
+    }
   },
   {
-    name: 'FC Bayern München',
-    id: 'FCB'
+    position: 3,
+    team: {
+      name: 'FC Bayern München',
+      id: 'FCB'
+    }
   },
   {
-    name: 'VFL Wolfsburg',
-    id: 'VFL'
+    position: 4,
+    team: {
+      name: 'VFL Wolfsburg',
+      id: 'VFL'
+    }
   },
   {
-    name: 'Bayer Leverkusen',
-    id: 'B04'
+    position: 5,
+    team:  {
+      name: 'Bayer Leverkusen',
+      id: 'B04'
+    }
   },
   {
-    name: 'FC Schalke',
-    id: 'S04'
+    position: 6,
+    team:   {
+      name: 'FC Schalke 04',
+      id: 'S04'
+    }
   },
   {
-    name: 'Hertha BSC Berlin',
-    id: 'BSC'
+    position: 7,
+    team: {
+      name: 'Hertha BSC Berlin',
+      id: 'BSC'
+    }
   },
   {
-    name: '1. FC Köln',
-    id: '1FC'
+    position: 8,
+    team:   {
+      name: '1. FC Köln',
+      id: '1FC'
+    }
   },
   {
-    name: 'FC Ingolstadt',
-    id: 'FCI'
+    position: 9,
+    team: {
+      name: 'FC Ingolstadt',
+      id: 'FCI'
+    }
   },
   {
-    name: 'Darmstadt 98',
-    id: 'D98'
+    position: 10,
+    team:   {
+      name: 'Darmstadt 98',
+      id: 'D98'
+    }
   },
   {
-    name: 'Hamburger SV',
-    id: 'HSV'
+    position: 11,
+    team:  {
+      name: 'Hamburger SV',
+      id: 'HSV'
+    }
   },
   {
-    name: 'Eintracht Frankfurt',
-    id: 'SGE'
+    position: 12,
+    team:  {
+      name: 'Eintracht Frankfurt',
+      id: 'SGE'
+    }
   },
   {
-    name: 'Werder Bremen',
-    id: 'SVW'
+    position: 13,
+    team: {
+      name: 'Werder Bremen',
+      id: 'SVW'
+    }
   },
   {
-    name: 'Hoffenheim',
-    id: 'SAP'
+    position: 14,
+    team:  {
+      name: 'Hoffenheim',
+      id: 'SAP'
+    }
   },
   {
-    name: 'FC Augsburg',
-    id: 'FCA'
+    position: 15,
+    team:  {
+      name: 'FC Augsburg',
+      id: 'FCA'
+    }
   },
   {
-    name: 'Hannover 96',
-    id: 'H96'
+    position: 16,
+    team: {
+      name: 'Hannover 96',
+      id: 'H96'
+    }
   },
   {
-    name: 'VFB Stuttgart',
-    id: 'VFB'
+    position: 17,
+    team: {
+      name: 'Mainz 05',
+      id: 'M05'
+    }
+  },
+  {
+    position: 18,
+    team: {
+      name: 'VFB Stuttgart',
+      id: 'VFB'
+    }
   }
+
 ];
 
 

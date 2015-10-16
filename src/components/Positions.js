@@ -1,11 +1,11 @@
 import React, { PropTypes } from 'react';
-import Team from './Team';
+import Position from './Position';
 
-var Teams = React.createClass({
+var Positions = React.createClass({
   render: function () {
     var rows = [];
-    this.props.teams.forEach(function (teamIter) {
-      rows.push(<Team team={teamIter} key={teamIter.id}/>);
+    this.props.positions.forEach(function (posIter) {
+      rows.push(<Position position={posIter} key={posIter.position}/>);
     });
     return (
       <div className="panel panel-primary">
@@ -13,6 +13,7 @@ var Teams = React.createClass({
           <h3 className="panel-title">Stecktabelle</h3>
         </div>
         <div className="panel-body">
+
           {rows}
         </div>
       </div>
@@ -22,4 +23,4 @@ var Teams = React.createClass({
   }
 });
 
-export default Teams;
+export default Positions;

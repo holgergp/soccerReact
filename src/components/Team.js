@@ -48,18 +48,20 @@ const propTypes = {
 
 var Team = React.createClass({
 
+
+
   render: function () {
+    console.log (this.props.team);
     // These two props are injected by React DnD,
     // as defined by your `collect` function above:
     const { isDragging, connectDragSource } = this.props;
 
-
     return connectDragSource(
-      <div>
+
         <div className="col-md-12 btn btn-warning" style={{cursor: 'pointer'}}>
           {this.props.team.name}
         </div>
-      </div>
+
     );
   }
 });
