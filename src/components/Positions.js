@@ -4,8 +4,9 @@ import Position from './Position';
 var Positions = React.createClass({
   render: function () {
     var rows = [];
+    var swapPositions = this.props.swapPositions;
     this.props.positions.forEach(function (posIter) {
-      rows.push(<Position position={posIter} key={posIter.position}/>);
+      rows.push(<Position position={posIter} key={posIter.position} swapPositions={swapPositions}/>);
     });
     return (
       <div className="panel panel-primary">

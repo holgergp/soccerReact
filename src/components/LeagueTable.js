@@ -3,6 +3,33 @@ import Positions from './Positions';
 import { DragDropContext } from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
 
+
+function findTeamPosition(teamId, positions) {
+  var foundPosition = -1;
+
+  positions.forEach(function (posIter) {
+    if (posIter.team.id === teamId) {
+      foundPosition = posIter.position;
+    }
+  });
+
+  return foundPosition;
+
+}
+
+function findTeam(teamId, positions) {
+  var foundTeam = {};
+
+  positions.forEach(function (posIter) {
+    if (posIter.team.id === teamId) {
+      foundTeam = posIter.team;
+    }
+  });
+
+  return foundTeam;
+
+}
+
 var LeagueTable = React.createClass({
   getInitialState: function () {
     return {
@@ -14,11 +41,47 @@ var LeagueTable = React.createClass({
   render: function () {
     return (
       <div className="col-md-6">
-        <Positions positions={this.state.positions}/>
+        <Positions positions={this.state.positions} swapPositions={this.swapPositions}/>
 
       </div>
     );
+  },
+
+  swapPositions: function (sourceTeamId, targetTeamId) {
+
+
+
+    var updatedPositions = this.state.positions;
+
+    var sourcePosition = findTeamPosition(sourceTeamId.sourceId,updatedPositions);
+    var targetPosition = findTeamPosition(targetTeamId,updatedPositions);
+
+    var sourceTeam = findTeam(sourceTeamId.sourceId,updatedPositions);
+    var targetTeam = findTeam(targetTeamId,updatedPositions);
+
+    var newTarget = {
+      position : targetPosition,
+      team : sourceTeam
+    };
+
+    var newSource = {
+      position : sourcePosition,
+      team : targetTeam
+    };
+
+    updatedPositions[targetPosition -1] = newTarget;
+    updatedPositions[sourcePosition -1] = newSource;
+    debugger
+
+    this.setState({
+        positions: updatedPositions,
+        newTeam: {}
+      }
+    );
+
   }
+
+
 });
 
 
@@ -53,14 +116,14 @@ var SAMPLE_LEAGUE_TABLE = [
   },
   {
     position: 5,
-    team:  {
+    team: {
       name: 'Bayer Leverkusen',
       id: 'B04'
     }
   },
   {
     position: 6,
-    team:   {
+    team: {
       name: 'FC Schalke 04',
       id: 'S04'
     }
@@ -74,7 +137,7 @@ var SAMPLE_LEAGUE_TABLE = [
   },
   {
     position: 8,
-    team:   {
+    team: {
       name: '1. FC Köln',
       id: '1FC'
     }
@@ -88,21 +151,21 @@ var SAMPLE_LEAGUE_TABLE = [
   },
   {
     position: 10,
-    team:   {
+    team: {
       name: 'Darmstadt 98',
       id: 'D98'
     }
   },
   {
     position: 11,
-    team:  {
+    team: {
       name: 'Hamburger SV',
       id: 'HSV'
     }
   },
   {
     position: 12,
-    team:  {
+    team: {
       name: 'Eintracht Frankfurt',
       id: 'SGE'
     }
@@ -116,14 +179,14 @@ var SAMPLE_LEAGUE_TABLE = [
   },
   {
     position: 14,
-    team:  {
+    team: {
       name: 'Hoffenheim',
       id: 'SAP'
     }
   },
   {
     position: 15,
-    team:  {
+    team: {
       name: 'FC Augsburg',
       id: 'FCA'
     }

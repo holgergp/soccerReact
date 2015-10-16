@@ -7,9 +7,9 @@ import { ItemTypes } from './Constants';
  * Only `beginDrag` function is required.
  */
 const teamSource = {
-  beginDrag(props) {
+  beginDrag(props, monitor, component) {
     // Return the data describing the dragged item
-    const item = { id: props.id };
+    const item = { sourceId: component.props.team.id };
     return item;
   },
 
@@ -19,9 +19,9 @@ const teamSource = {
     }
 
     // When dropped on a compatible target, do something
-    const item = monitor.getItem();
-    const dropResult = monitor.getDropResult();
-    //TODO Reorder
+    const sourceTeam = monitor.getItem();
+    const targetTeam = monitor.getDropResult();
+    props.swapPositions(sourceTeam, targetTeam.id);
 
   }
 };
@@ -51,7 +51,7 @@ var Team = React.createClass({
 
 
   render: function () {
-    console.log (this.props.team);
+
     // These two props are injected by React DnD,
     // as defined by your `collect` function above:
     const { isDragging, connectDragSource } = this.props;
