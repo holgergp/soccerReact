@@ -21,9 +21,6 @@ class AppComponent extends React.Component {
           </div>
         </div>
       </div>
-
-
-
     );
   }
 }
