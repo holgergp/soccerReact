@@ -41,7 +41,7 @@ var LeagueTable = React.createClass({
   render: function () {
     return (
       <div className="col-md-6">
-        <Positions positions={this.state.positions} swapPositions={this.swapPositions}/>
+        <Positions positions={this.state.positions} swapPositions={this.swapPositions} calculatePositionCssClass={this.calculatePositionCssClass}/>
 
       </div>
     );
@@ -71,7 +71,6 @@ var LeagueTable = React.createClass({
 
     updatedPositions[targetPosition -1] = newTarget;
     updatedPositions[sourcePosition -1] = newSource;
-    debugger
 
     this.setState({
         positions: updatedPositions,
@@ -79,9 +78,28 @@ var LeagueTable = React.createClass({
       }
     );
 
+  },
+
+  calculatePositionCssClass: function(positionNumber){
+    if(positionNumber === 1) {
+      return "tabellenfuehrerClass"
+    }
+    if(positionNumber <= 3){
+      return "championsLeagueClass"
+    }
+    if(positionNumber <= 6){
+      return "europaLeagueClass"
+    }
+    if(positionNumber <= 15){
+      return "mittelfeldClass"
+    }
+    if(positionNumber === 16){
+      return "relegationClass"
+    }
+    else {
+      return "abstiegClass"
+    }
   }
-
-
 });
 
 
@@ -214,6 +232,8 @@ var SAMPLE_LEAGUE_TABLE = [
   }
 
 ];
+
+
 
 
 export default DragDropContext(HTML5Backend)(LeagueTable);

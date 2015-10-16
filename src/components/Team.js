@@ -1,6 +1,7 @@
 import { DragSource } from 'react-dnd';
 import React, { PropTypes } from 'react';
 import { ItemTypes } from './Constants';
+import classNames  from 'classnames';
 
 /**
  * Specifies the drag source contract.
@@ -46,19 +47,23 @@ const propTypes = {
 
 
 
+
 var Team = React.createClass({
 
 
 
   render: function () {
 
+    //TODO Das ist noch unschoen. In Position rendern
+    var positionNumber = this.props.positionNumber;
     // These two props are injected by React DnD,
     // as defined by your `collect` function above:
     const { isDragging, connectDragSource } = this.props;
-
+    var calculatePositionCssClass = this.props.calculatePositionCssClass;
+    var classes = classNames('col-md-12','btn',  calculatePositionCssClass(positionNumber));
     return connectDragSource(
 
-        <div className="col-md-12 btn btn-warning" style={{cursor: 'pointer'}}>
+        <div className={ classes } style={{cursor: 'pointer'}}>
           {this.props.team.name}
         </div>
 

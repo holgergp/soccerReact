@@ -19,17 +19,20 @@ function collect(connect, monitor) {
   };
 }
 
+
 var Position = React.createClass({
 
 
   render: function () {
 
+    var position = this.props.position;
     var team = this.props.position.team;
     var swapPositions = this.props.swapPositions;
+    var calculatePositionCssClass = this.props.calculatePositionCssClass;
     const { x, y, connectDropTarget, isOver } = this.props;
     return connectDropTarget(
       <div>
-        <Team team={team} swapPositions={swapPositions}/>
+        <Team team={team}  positionNumber={position.position} swapPositions={swapPositions}  calculatePositionCssClass={calculatePositionCssClass}/>
       </div>
     );
   }
