@@ -54,6 +54,7 @@
   },
   "dependencies": {
     "classnames": "^2.1.5",
+    "express": ">=4.9.5",
     "less-loader": "^2.0.0",
     "lodash": "^3.10.1",
     "normalize.css": "^3.0.3",
@@ -61,6 +62,6 @@
     "react-dnd": "^2.0.0",
     "react-dnd-html5-backend": "^2.0.0",
     "react-dom": "^0.14.0",
-    "express": ">=4.9.5"
+    "react-pstate": "0.0.4"
   }
 }

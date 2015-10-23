@@ -31,17 +31,36 @@ function findTeam(teamId, positions) {
 }
 
 var LeagueTable = React.createClass({
+
+
   getInitialState: function () {
-    return {
+    var defaultState = {
       positions: SAMPLE_LEAGUE_TABLE,
       newTeam: {}
     };
+    if(_.isUndefined(localStorage.state)){
+      return defaultState;
+
+    }
+    var localstate = JSON.parse(localStorage.state);
+
+    if (_.isUndefined(localstate)) {
+      return defaultState;
+    }
+    return localstate;
+
   },
+
+  componentDidUpdate: function (prevProps, prevState) {
+    localStorage.state = JSON.stringify(this.state);
+  },
+
 
   render: function () {
     return (
       <div className="col-md-6">
-        <Positions positions={this.state.positions} swapPositions={this.swapPositions} calculatePositionCssClass={this.calculatePositionCssClass}/>
+        <Positions positions={this.state.positions} swapPositions={this.swapPositions}
+                   calculatePositionCssClass={this.calculatePositionCssClass}/>
 
       </div>
     );
@@ -50,27 +69,26 @@ var LeagueTable = React.createClass({
   swapPositions: function (sourceTeamId, targetTeamId) {
 
 
-
     var updatedPositions = this.state.positions;
 
-    var sourcePosition = findTeamPosition(sourceTeamId.sourceId,updatedPositions);
-    var targetPosition = findTeamPosition(targetTeamId,updatedPositions);
+    var sourcePosition = findTeamPosition(sourceTeamId.sourceId, updatedPositions);
+    var targetPosition = findTeamPosition(targetTeamId, updatedPositions);
 
-    var sourceTeam = findTeam(sourceTeamId.sourceId,updatedPositions);
-    var targetTeam = findTeam(targetTeamId,updatedPositions);
+    var sourceTeam = findTeam(sourceTeamId.sourceId, updatedPositions);
+    var targetTeam = findTeam(targetTeamId, updatedPositions);
 
     var newTarget = {
-      position : targetPosition,
-      team : sourceTeam
+      position: targetPosition,
+      team: sourceTeam
     };
 
     var newSource = {
-      position : sourcePosition,
-      team : targetTeam
+      position: sourcePosition,
+      team: targetTeam
     };
 
-    updatedPositions[targetPosition -1] = newTarget;
-    updatedPositions[sourcePosition -1] = newSource;
+    updatedPositions[targetPosition - 1] = newTarget;
+    updatedPositions[sourcePosition - 1] = newSource;
 
     this.setState({
         positions: updatedPositions,
@@ -80,20 +98,20 @@ var LeagueTable = React.createClass({
 
   },
 
-  calculatePositionCssClass: function(positionNumber){
-    if(positionNumber === 1) {
+  calculatePositionCssClass: function (positionNumber) {
+    if (positionNumber === 1) {
       return "tabellenfuehrerClass"
     }
-    if(positionNumber <= 3){
+    if (positionNumber <= 3) {
       return "championsLeagueClass"
     }
-    if(positionNumber <= 6){
+    if (positionNumber <= 6) {
       return "europaLeagueClass"
     }
-    if(positionNumber <= 15){
+    if (positionNumber <= 15) {
       return "mittelfeldClass"
     }
-    if(positionNumber === 16){
+    if (positionNumber === 16) {
       return "relegationClass"
     }
     else {
@@ -232,8 +250,6 @@ var SAMPLE_LEAGUE_TABLE = [
   }
 
 ];
-
-
 
 
 export default DragDropContext(HTML5Backend)(LeagueTable);
