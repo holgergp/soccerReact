@@ -35,7 +35,7 @@ var Position = React.createClass({
     return connectDropTarget(
       <div>
         <span>
-   <Team team={team} positionNumber={position.position} swapPositions switchEditing={switchEditing} updateTeamname={updateTeamname} swapPositions={swapPositions}
+   <Team team={team} positionNumber={position.position} switchEditing={switchEditing} updateTeamname={updateTeamname} swapPositions={swapPositions}
          calculatePositionCssClass={calculatePositionCssClass}/>
       </span>
       </div>
