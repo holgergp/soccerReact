@@ -46,3 +46,7 @@ body {
   margin-bottom: 8px;
 }
 
+.textPointer {
+  cursor: text;
+}
+

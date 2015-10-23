@@ -3,6 +3,8 @@ import React, { PropTypes } from 'react';
 import { ItemTypes } from './Constants';
 import classNames  from 'classnames';
 
+import ContentEditable from  'react-wysiwyg';
+
 /**
  * Specifies the drag source contract.
  * Only `beginDrag` function is required.
@@ -10,7 +12,7 @@ import classNames  from 'classnames';
 const teamSource = {
   beginDrag(props, monitor, component) {
     // Return the data describing the dragged item
-    const item = { sourceId: component.props.team.id };
+    const item = {sourceId: component.props.team.id};
     return item;
   },
 
@@ -46,29 +48,53 @@ const propTypes = {
 };
 
 
-
-
 var Team = React.createClass({
-
 
 
   render: function () {
 
     //TODO Das ist noch unschoen. In Position rendern
     var positionNumber = this.props.positionNumber;
+    var switchEditing = this.props.switchEditing;
+    var updateTeamname = this.props.updateTeamname;
+    var team = this.props.team;
     // These two props are injected by React DnD,
     // as defined by your `collect` function above:
     const { isDragging, connectDragSource } = this.props;
     var calculatePositionCssClass = this.props.calculatePositionCssClass;
-    var classes = classNames('col-md-12','btn',  calculatePositionCssClass(positionNumber));
+    var classes = classNames('col-md-12', 'btn', calculatePositionCssClass(positionNumber));
+    /**  <div className={ classes } style={{cursor: 'pointer'}}>
+     {this.props.team.name}
+     </div>
+     **/
     return connectDragSource(
-
-        <div className={ classes } style={{cursor: 'pointer'}}>
-          {this.props.team.name}
+      <div className={ classes } style={{cursor: 'pointer'}}>
+        <div>
+          <ContentEditable
+            tagName='div'
+            onChange={onChange}
+            className='textPointer'
+            html={team.name}
+            autofocus={true}
+            maxLength={200}
+            editing={this.props.team.editing}
+            preventStyling
+            noLinebreaks
+            />
         </div>
-
+      </div>
     );
-  }
+
+    function onChange(text) {
+      updateTeamname(team, text)
+    };
+
+    function clickHandler() {
+      switchEditing(team);
+    }
+  },
+
+
 });
 
 Team.propTypes = propTypes;
