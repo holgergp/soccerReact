@@ -6,11 +6,10 @@ var Positions = React.createClass({
     var rows = [];
     var swapPositions = this.props.swapPositions;
     var calculatePositionCssClass = this.props.calculatePositionCssClass;
-    var switchEditing = this.props.switchEditing;
     var updateTeamname = this.props.updateTeamname;
 
     this.props.positions.forEach(function (posIter) {
-      rows.push(<Position position={posIter} key={posIter.position} swapPositions={swapPositions} calculatePositionCssClass = {calculatePositionCssClass}  switchEditing={switchEditing} updateTeamname={updateTeamname}/>);
+      rows.push(<Position position={posIter} key={posIter.position} swapPositions={swapPositions} calculatePositionCssClass = {calculatePositionCssClass}   updateTeamname={updateTeamname}/>);
     });
     return (
       <div className="panel panel-primary">

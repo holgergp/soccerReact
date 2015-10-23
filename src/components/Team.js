@@ -12,8 +12,7 @@ import ContentEditable from  'react-wysiwyg';
 const teamSource = {
   beginDrag(props, monitor, component) {
     // Return the data describing the dragged item
-    const item = {sourceId: component.props.team.id};
-    return item;
+    return {sourceId: component.props.team.id};
   },
 
   endDrag(props, monitor, component) {
@@ -55,7 +54,6 @@ var Team = React.createClass({
 
     //TODO Das ist noch unschoen. In Position rendern
     var positionNumber = this.props.positionNumber;
-    var switchEditing = this.props.switchEditing;
     var updateTeamname = this.props.updateTeamname;
     var team = this.props.team;
     // These two props are injected by React DnD,
@@ -63,10 +61,6 @@ var Team = React.createClass({
     const { isDragging, connectDragSource } = this.props;
     var calculatePositionCssClass = this.props.calculatePositionCssClass;
     var classes = classNames('col-md-12', 'btn', calculatePositionCssClass(positionNumber));
-    /**  <div className={ classes } style={{cursor: 'pointer'}}>
-     {this.props.team.name}
-     </div>
-     **/
     return connectDragSource(
       <div className={ classes } style={{cursor: 'pointer'}}>
         <div>
@@ -87,12 +81,9 @@ var Team = React.createClass({
 
     function onChange(text) {
       updateTeamname(team, text)
-    };
-
-    function clickHandler() {
-      switchEditing(team);
     }
-  },
+
+  }
 
 
 });

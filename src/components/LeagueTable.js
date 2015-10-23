@@ -60,7 +60,7 @@ var LeagueTable = React.createClass({
     return (
       <div className="col-md-6">
         <Positions positions={this.state.positions} swapPositions={this.swapPositions}
-                   calculatePositionCssClass={this.calculatePositionCssClass}  switchEditing={this.switchEditing} updateTeamname={this.updateTeamname}/>
+                   calculatePositionCssClass={this.calculatePositionCssClass}  updateTeamname={this.updateTeamname}/>
 
       </div>
     );
@@ -100,22 +100,22 @@ var LeagueTable = React.createClass({
 
   calculatePositionCssClass: function (positionNumber) {
     if (positionNumber === 1) {
-      return "tabellenfuehrerClass"
+      return 'tabellenfuehrerClass tabelleClass'
     }
     if (positionNumber <= 3) {
-      return "championsLeagueClass"
+      return 'championsLeagueClass tabelleClass'
     }
     if (positionNumber <= 6) {
-      return "europaLeagueClass"
+      return 'europaLeagueClass tabelleClass'
     }
     if (positionNumber <= 15) {
-      return "mittelfeldClass"
+      return 'mittelfeldClass tabelleClass'
     }
     if (positionNumber === 16) {
-      return "relegationClass"
+      return 'relegationClass tabelleClass'
     }
     else {
-      return "abstiegClass"
+      return 'abstiegClass tabelleClass'
     }
   },
 
