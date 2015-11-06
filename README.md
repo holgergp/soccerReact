@@ -5,4 +5,4 @@ For the time being start the dev-server using `npm start`
 
 Access the webpage located at `http://localhost:8000/webpack-dev-server/`. But it should fire up automatically.
 
-The work-in-progress can be seen (later) [here:](http://soccerreact.herokuapp.com/ ) 
+The work-in-progress can be seen [here:](http://soccerreact.herokuapp.com/ ) 
