@@ -15,7 +15,8 @@ const teamSource = {
     return {sourceId: component.props.team.id};
   },
 
-  endDrag(props, monitor, component) {
+  endDrag(props, monitor) {
+    //unused param component
     if (!monitor.didDrop()) {
       return;
     }
@@ -53,14 +54,14 @@ var Team = React.createClass({
   render: function () {
 
     //TODO Das ist noch unschoen. In Position rendern
-    var positionNumber = this.props.positionNumber;
-    var updateTeamname = this.props.updateTeamname;
-    var team = this.props.team;
+    const positionNumber = this.props.positionNumber;
+    const updateTeamname = this.props.updateTeamname;
+    const team = this.props.team;
     // These two props are injected by React DnD,
     // as defined by your `collect` function above:
-    const { isDragging, connectDragSource } = this.props;
-    var calculatePositionCssClass = this.props.calculatePositionCssClass;
-    var classes = classNames('col-md-12', 'btn', calculatePositionCssClass(positionNumber));
+    const { connectDragSource } = this.props;
+    const calculatePositionCssClass = this.props.calculatePositionCssClass;
+    const classes = classNames('col-md-12', 'btn', calculatePositionCssClass(positionNumber));
     return connectDragSource(
       <div className={ classes } style={{cursor: 'pointer'}}>
         <div>

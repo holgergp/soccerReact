@@ -1,16 +1,11 @@
 require('normalize.css');
 require('styles/App.css');
 
-import React, { PropTypes } from 'react';
+import React from 'react';
 
-import LeagueTable from './LeagueTable'
-
-import lodash from 'lodash';
-
-let yeomanImage = require('../images/yeoman.png');
+import LeagueTable from './LeagueTable';
 
 
-//Hmmm raff ich das?
 class AppComponent extends React.Component {
   render() {
     return (

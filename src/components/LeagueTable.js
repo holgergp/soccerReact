@@ -1,11 +1,13 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
 import Position from './Position';
 import { DragDropContext } from 'react-dnd';
+
+import _ from 'lodash';
 import HTML5Backend from 'react-dnd-html5-backend';
 
 
 function findTeamPosition(teamId, positions) {
-  var foundPosition = -1;
+  let foundPosition = -1;
 
   positions.forEach(function (posIter) {
     if (posIter.team.id === teamId) {
@@ -18,7 +20,7 @@ function findTeamPosition(teamId, positions) {
 }
 
 function findTeam(teamId, positions) {
-  var foundTeam = {};
+  let foundTeam = {};
 
   positions.forEach(function (posIter) {
     if (posIter.team.id === teamId) {
@@ -34,7 +36,7 @@ var LeagueTable = React.createClass({
 
 
   getInitialState: function () {
-    var defaultState = {
+    const defaultState = {
       positions: SAMPLE_LEAGUE_TABLE,
       newTeam: {}
     };
@@ -42,7 +44,7 @@ var LeagueTable = React.createClass({
       return defaultState;
 
     }
-    var localstate = JSON.parse(localStorage.state);
+    let localstate = JSON.parse(localStorage.state);
 
     if (_.isUndefined(localstate)) {
       return defaultState;
@@ -51,16 +53,17 @@ var LeagueTable = React.createClass({
 
   },
 
-  componentDidUpdate: function (prevProps, prevState) {
+  componentDidUpdate: function () {
+    //unused params prevProps and prevState
     localStorage.state = JSON.stringify(this.state);
   },
 
 
   render: function () {
-    var rows = [];
-    var swapPositions = this.swapPositions;
-    var calculatePositionCssClass = this.calculatePositionCssClass;
-    var updateTeamname = this.updateTeamname;
+    let rows = [];
+    const swapPositions = this.swapPositions;
+    const calculatePositionCssClass = this.calculatePositionCssClass;
+    const updateTeamname = this.updateTeamname;
 
     this.state.positions.forEach(function (posIter) {
       rows.push(<Position position={posIter} key={posIter.position} swapPositions={swapPositions}
@@ -84,20 +87,20 @@ var LeagueTable = React.createClass({
   swapPositions: function (sourceTeamId, targetTeamId) {
 
 
-    var updatedPositions = this.state.positions;
+    let updatedPositions = this.state.positions;
 
-    var sourcePosition = findTeamPosition(sourceTeamId.sourceId, updatedPositions);
-    var targetPosition = findTeamPosition(targetTeamId, updatedPositions);
+    const sourcePosition = findTeamPosition(sourceTeamId.sourceId, updatedPositions);
+    const targetPosition = findTeamPosition(targetTeamId, updatedPositions);
 
-    var sourceTeam = findTeam(sourceTeamId.sourceId, updatedPositions);
-    var targetTeam = findTeam(targetTeamId, updatedPositions);
+    const sourceTeam = findTeam(sourceTeamId.sourceId, updatedPositions);
+    const targetTeam = findTeam(targetTeamId, updatedPositions);
 
-    var newTarget = {
+    const newTarget = {
       position: targetPosition,
       team: sourceTeam
     };
 
-    var newSource = {
+    const newSource = {
       position: sourcePosition,
       team: targetTeam
     };
@@ -135,13 +138,13 @@ var LeagueTable = React.createClass({
   },
 
   switchEditing: function (team) {
-    var positions = this.state.positions;
+    let positions = this.state.positions;
 
-    var position = findTeamPosition(team.id, positions);
+    const position = findTeamPosition(team.id, positions);
 
     team.editing = !team.editing;
 
-    var enabledPosition = {
+    const enabledPosition = {
       position: position,
       team: team
     };
@@ -167,7 +170,7 @@ var LeagueTable = React.createClass({
     //team.editing = false;
     team.name = updatedText;
 
-    var enabledPosition = {
+    const enabledPosition = {
       position: position,
       team: team
     };
@@ -179,11 +182,11 @@ var LeagueTable = React.createClass({
         newTeam: {}
       }
     );
-  },
+  }
 });
 
 
-var SAMPLE_LEAGUE_TABLE = [
+const SAMPLE_LEAGUE_TABLE = [
   {
     position: 1,
     team: {
