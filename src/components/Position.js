@@ -1,7 +1,6 @@
 import React, { PropTypes } from 'react';
 import { DropTarget } from 'react-dnd';
 import Team from './Team';
-import { swapPosition } from './LeagueTable';
 import { ItemTypes } from './Constants';
 
 const positionTarget = {

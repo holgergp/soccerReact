@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-import Positions from './Positions';
+import Position from './Position';
 import { DragDropContext } from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
 
@@ -38,7 +38,7 @@ var LeagueTable = React.createClass({
       positions: SAMPLE_LEAGUE_TABLE,
       newTeam: {}
     };
-    if(_.isUndefined(localStorage.state)){
+    if (_.isUndefined(localStorage.state)) {
       return defaultState;
 
     }
@@ -57,11 +57,26 @@ var LeagueTable = React.createClass({
 
 
   render: function () {
+    var rows = [];
+    var swapPositions = this.swapPositions;
+    var calculatePositionCssClass = this.calculatePositionCssClass;
+    var updateTeamname = this.updateTeamname;
+
+    this.state.positions.forEach(function (posIter) {
+      rows.push(<Position position={posIter} key={posIter.position} swapPositions={swapPositions}
+                          calculatePositionCssClass={calculatePositionCssClass}
+                          updateTeamname={updateTeamname}/>);
+    });
     return (
       <div className="col-md-6">
-        <Positions positions={this.state.positions} swapPositions={this.swapPositions}
-                   calculatePositionCssClass={this.calculatePositionCssClass}  updateTeamname={this.updateTeamname}/>
-
+        <div className="panel panel-primary">
+          <div className="panel-heading">
+            <h3 className="panel-title">Ligatabelle zum Selberstecken</h3>
+          </div>
+          <div className="panel-body">
+            {rows}
+          </div>
+        </div>
       </div>
     );
   },
@@ -119,7 +134,7 @@ var LeagueTable = React.createClass({
     }
   },
 
-  switchEditing: function (team){
+  switchEditing: function (team) {
     var positions = this.state.positions;
 
     var position = findTeamPosition(team.id, positions);
@@ -132,7 +147,7 @@ var LeagueTable = React.createClass({
     };
 
 
-    positions[position -1] = enabledPosition;
+    positions[position - 1] = enabledPosition;
 
 
     this.setState({
@@ -143,7 +158,7 @@ var LeagueTable = React.createClass({
 
   },
 
-  updateTeamname: function (team, updatedText){
+  updateTeamname: function (team, updatedText) {
 
     var positions = this.state.positions;
 
@@ -157,7 +172,7 @@ var LeagueTable = React.createClass({
       team: team
     };
 
-    positions[position -1] = enabledPosition;
+    positions[position - 1] = enabledPosition;
 
     this.setState({
         positions: positions,
