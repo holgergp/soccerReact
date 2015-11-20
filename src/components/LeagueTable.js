@@ -142,29 +142,6 @@ var LeagueTable = React.createClass({
     }
   },
 
-  switchEditing: function (team) {
-    let positions = this.state.positions;
-
-    const position = findTeamPosition(team.id, positions);
-
-    team.editing = !team.editing;
-
-    const enabledPosition = {
-      position: position,
-      team: team
-    };
-
-
-    positions[position - 1] = enabledPosition;
-
-
-    this.setState({
-        positions: positions,
-        newTeam: {}
-      }
-    );
-
-  },
 
   updateTeamname: function (team, updatedText) {
 
