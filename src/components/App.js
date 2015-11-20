@@ -6,8 +6,8 @@ import React from 'react';
 import LeagueTable from './LeagueTable';
 
 
-class AppComponent extends React.Component {
-  render() {
+let AppComponent = React.createClass({
+  render: function () {
     return (
       <div className="index">
         <div className="container">
@@ -18,7 +18,7 @@ class AppComponent extends React.Component {
       </div>
     );
   }
-}
+});
 
 AppComponent.defaultProps = {};
 

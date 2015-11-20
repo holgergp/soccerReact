@@ -20,7 +20,7 @@ function collect(connect, monitor) {
 }
 
 
-var Position = React.createClass({
+let Position = React.createClass({
 
 
   render: function () {
