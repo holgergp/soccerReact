@@ -40,7 +40,11 @@ function collect(connect, monitor) {
 }
 
 const propTypes = {
-  text: PropTypes.string.isRequired,
+
+  positionNumber: PropTypes.number.isRequired,
+  updateTeamname: PropTypes.func.isRequired,
+  calculatePositionCssClass: PropTypes.func.isRequired,
+  team: PropTypes.object.isRequired,
 
   // Injected by React DnD:
   isDragging: PropTypes.bool.isRequired,
@@ -53,7 +57,6 @@ var Team = React.createClass({
 
   render: function () {
 
-    //TODO Das ist noch unschoen. In Position rendern
     const positionNumber = this.props.positionNumber;
     const updateTeamname = this.props.updateTeamname;
     const team = this.props.team;

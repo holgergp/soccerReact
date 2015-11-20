@@ -44,7 +44,10 @@ let Position = React.createClass({
 
 
 Position.propTypes = {
-  swapPositions: PropTypes.func.isRequired
+  swapPositions: PropTypes.func.isRequired,
+  updateTeamname: PropTypes.func.isRequired,
+  calculatePositionCssClass: PropTypes.func.isRequired,
+  position: PropTypes.object.isRequired
 };
 
 export default DropTarget(ItemTypes.TEAM, positionTarget, collect)(Position);
