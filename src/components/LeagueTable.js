@@ -66,11 +66,15 @@ var LeagueTable = React.createClass({
     const calculatePositionCssClass = this.calculatePositionCssClass;
     const updateTeamname = this.updateTeamname;
 
-    this.state.positions.forEach(function (posIter) {
-      rows.push(<Position position={posIter} key={posIter.position} swapPositions={swapPositions}
-                          calculatePositionCssClass={calculatePositionCssClass}
-                          updateTeamname={updateTeamname}/>);
+
+    var positionNodes = this.state.positions.map(function(posIter) {
+      return (
+        <Position position={posIter} key={posIter.position} swapPositions={swapPositions}
+                  calculatePositionCssClass={calculatePositionCssClass}
+                  updateTeamname={updateTeamname}/>
+      );
     });
+
     return (
       <div className="col-md-6">
         <div className="panel panel-primary">
@@ -78,7 +82,7 @@ var LeagueTable = React.createClass({
             <h3 className="panel-title">Ligatabelle zum Selberstecken</h3>
           </div>
           <div className="panel-body">
-            {rows}
+            {positionNodes}
           </div>
         </div>
       </div>
