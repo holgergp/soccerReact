@@ -3,13 +3,13 @@
 Demo application to compare various client side mvc approaches. Using React.js
 For the time being start the dev-server using `npm start`
 
-If you want to test the application `npm test`
-
-I deploy the application in disted form, if you feel to dist the application yourself run `npm run dist`
-
 Access the webpage located at `http://localhost:8000/webpack-dev-server/`. But it should fire up automatically.
 
-A running version can be seen [here:](http://soccerreact.herokuapp.com/ ) 
+A running version can be seen [here:](http://soccerreact.herokuapp.com/ ).
+
+If you want to test the application `npm test`.
+
+I deploy the application in disted form, if you feel to dist the application yourself run `npm run dist`.
 
 I prepared four separate branches, that represent different stages in the development of this sample.
  
