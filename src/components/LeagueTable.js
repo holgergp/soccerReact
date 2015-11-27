@@ -8,17 +8,17 @@ import { SAMPLE_LEAGUE_TABLE } from './Constants';
 
 
 function findTeamPosition(teamId, positions) {
-  let foundPosition = positions.find(function (posIter) {
+  let foundPosition = positions.filter(function (posIter) {
     return posIter.team.id === teamId;
-  });
+  }).pop();
 
   return foundPosition.position;
 }
 
 function findTeam(teamId, positions) {
-  let foundPosition = positions.find(function (posIter) {
+  let foundPosition = positions.filter(function (posIter) {
     return posIter.team.id === teamId;
-  });
+  }).pop()
 
   return foundPosition.team;
 }
@@ -51,7 +51,6 @@ var LeagueTable = React.createClass({
 
 
   render: function () {
-    let rows = [];
     const swapPositions = this.swapPositions;
     const updateTeamname = this.updateTeamname;
 
