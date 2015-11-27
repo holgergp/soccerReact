@@ -1,12 +1,9 @@
 import React, { PropTypes } from 'react';
 import classNames  from 'classnames';
 
-import ContentEditable from  'react-wysiwyg';
-
 const propTypes = {
 
   positionNumber: PropTypes.number.isRequired,
-  updateTeamname: PropTypes.func.isRequired,
   team: PropTypes.object.isRequired
 
 };
@@ -38,30 +35,15 @@ var Team = React.createClass({
   render: function () {
 
     const positionNumber = this.props.positionNumber;
-    const updateTeamname = this.props.updateTeamname;
     const team = this.props.team;
     const classes = classNames('col-md-12', 'btn', calculatePositionCssClass(positionNumber));
     return (
       <div className={ classes } style={{cursor: 'pointer'}}>
         <div>
-          <ContentEditable
-            tagName='div'
-            onChange={onChange}
-            className='textPointer'
-            html={team.name}
-            autofocus={true}
-            maxLength={200}
-            editing={this.props.team.editing}
-            preventStyling
-            noLinebreaks
-          />
+          {team.name}
         </div>
       </div>)
       ;
-
-    function onChange(text) {
-      updateTeamname(team, text)
-    }
 
   }
 

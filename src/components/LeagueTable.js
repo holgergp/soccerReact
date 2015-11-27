@@ -4,15 +4,6 @@ import Position from './Position';
 import _ from 'lodash';
 import { SAMPLE_LEAGUE_TABLE } from './Constants';
 
-
-function findTeamPosition(teamId, positions) {
-  let foundPosition = positions.filter(function (posIter) {
-    return posIter.team.id === teamId;
-  }).pop();
-
-  return foundPosition.position;
-}
-
 var LeagueTable = React.createClass({
 
 
@@ -41,12 +32,10 @@ var LeagueTable = React.createClass({
 
 
   render: function () {
-    const updateTeamname = this.updateTeamname;
 
     var positionNodes = this.state.positions.map(function (posIter) {
       return (
-        <Position position={posIter} key={posIter.position}
-                  updateTeamname={updateTeamname}/>
+        <Position position={posIter} key={posIter.position}/>
       );
     });
 
@@ -61,29 +50,6 @@ var LeagueTable = React.createClass({
           </div>
         </div>
       </div>
-    );
-  },
-
-
-  updateTeamname: function (team, updatedText) {
-
-    var positions = this.state.positions;
-
-    var position = findTeamPosition(team.id, positions);
-
-    team.name = updatedText;
-
-    const enabledPosition = {
-      position: position,
-      team: team
-    };
-
-    positions[position - 1] = enabledPosition;
-
-    this.setState({
-        positions: positions,
-        newTeam: {}
-      }
     );
   }
 });
