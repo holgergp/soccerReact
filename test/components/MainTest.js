@@ -4,7 +4,7 @@
 'use strict';
 
 // Uncomment the following lines to use the react test utilities
-import React from 'react/addons';
+import React from '../../../../concertReact/node_modules/react/addons';
 const TestUtils = React.addons.TestUtils;
 import createComponent from 'helpers/shallowRenderHelper';
 

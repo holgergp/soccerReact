@@ -5,7 +5,7 @@
  * @see http://simonsmith.io/unit-testing-react-components-without-a-dom/
  * @author somonsmith
  */
-import React from 'react/addons';
+import React from '../../../../concertReact/node_modules/react/addons';
 const TestUtils = React.addons.TestUtils;
 
 /**

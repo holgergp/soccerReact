@@ -8,7 +8,7 @@ var allowedEnvs = ['dev', 'dist', 'test'];
 
 // Set the correct environment
 var env;
-if(args._.length > 0 && args._.indexOf('start') !== -1) {
+if (args._.length > 0 && args._.indexOf('start') !== -1) {
   env = 'test';
 } else if (args.env) {
   env = args.env;
