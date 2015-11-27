@@ -29,13 +29,11 @@ let Position = React.createClass({
     const team = this.props.position.team;
     const updateTeamname = this.props.updateTeamname;
     const swapPositions = this.props.swapPositions;
-    const calculatePositionCssClass = this.props.calculatePositionCssClass;
     const { connectDropTarget } = this.props;
     return connectDropTarget(
       <div>
         <span>
-   <Team team={team} positionNumber={position.position} updateTeamname={updateTeamname} swapPositions={swapPositions}
-         calculatePositionCssClass={calculatePositionCssClass}/>
+   <Team team={team} positionNumber={position.position} updateTeamname={updateTeamname} swapPositions={swapPositions}/>
       </span>
       </div>
     );
@@ -46,7 +44,6 @@ let Position = React.createClass({
 Position.propTypes = {
   swapPositions: PropTypes.func.isRequired,
   updateTeamname: PropTypes.func.isRequired,
-  calculatePositionCssClass: PropTypes.func.isRequired,
   position: PropTypes.object.isRequired
 };
 

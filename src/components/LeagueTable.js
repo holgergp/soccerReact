@@ -8,29 +8,19 @@ import { SAMPLE_LEAGUE_TABLE } from './Constants';
 
 
 function findTeamPosition(teamId, positions) {
-  let foundPosition = -1;
-
-  positions.forEach(function (posIter) {
-    if (posIter.team.id === teamId) {
-      foundPosition = posIter.position;
-    }
+  let foundPosition = positions.find(function (posIter) {
+    return posIter.team.id === teamId;
   });
 
-  return foundPosition;
-
+  return foundPosition.position;
 }
 
 function findTeam(teamId, positions) {
-  let foundTeam = {};
-
-  positions.forEach(function (posIter) {
-    if (posIter.team.id === teamId) {
-      foundTeam = posIter.team;
-    }
+  let foundPosition = positions.find(function (posIter) {
+    return posIter.team.id === teamId;
   });
 
-  return foundTeam;
-
+  return foundPosition.team;
 }
 
 var LeagueTable = React.createClass({
@@ -63,14 +53,11 @@ var LeagueTable = React.createClass({
   render: function () {
     let rows = [];
     const swapPositions = this.swapPositions;
-    const calculatePositionCssClass = this.calculatePositionCssClass;
     const updateTeamname = this.updateTeamname;
 
-
-    var positionNodes = this.state.positions.map(function(posIter) {
+    var positionNodes = this.state.positions.map(function (posIter) {
       return (
         <Position position={posIter} key={posIter.position} swapPositions={swapPositions}
-                  calculatePositionCssClass={calculatePositionCssClass}
                   updateTeamname={updateTeamname}/>
       );
     });
@@ -121,27 +108,6 @@ var LeagueTable = React.createClass({
 
   },
 
-  calculatePositionCssClass: function (positionNumber) {
-    if (positionNumber === 1) {
-      return 'tabellenfuehrerClass tabelleClass'
-    }
-    if (positionNumber <= 3) {
-      return 'championsLeagueClass tabelleClass'
-    }
-    if (positionNumber <= 6) {
-      return 'europaLeagueClass tabelleClass'
-    }
-    if (positionNumber <= 15) {
-      return 'mittelfeldClass tabelleClass'
-    }
-    if (positionNumber === 16) {
-      return 'relegationClass tabelleClass'
-    }
-    else {
-      return 'abstiegClass tabelleClass'
-    }
-  },
-
 
   updateTeamname: function (team, updatedText) {
 
@@ -166,8 +132,6 @@ var LeagueTable = React.createClass({
     );
   }
 });
-
-
 
 
 export default DragDropContext(HTML5Backend)(LeagueTable);
