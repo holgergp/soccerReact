@@ -1,9 +1,3 @@
-exports.ItemTypes = {
-  TEAM: 'team'
-};
-
-
-
 exports.SAMPLE_LEAGUE_TABLE = [
   {
     position: 1,

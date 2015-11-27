@@ -1,9 +1,7 @@
 import React from 'react';
 import Position from './Position';
-import { DragDropContext } from 'react-dnd';
 
 import _ from 'lodash';
-import HTML5Backend from 'react-dnd-html5-backend';
 import { SAMPLE_LEAGUE_TABLE } from './Constants';
 
 
@@ -13,14 +11,6 @@ function findTeamPosition(teamId, positions) {
   }).pop();
 
   return foundPosition.position;
-}
-
-function findTeam(teamId, positions) {
-  let foundPosition = positions.filter(function (posIter) {
-    return posIter.team.id === teamId;
-  }).pop()
-
-  return foundPosition.team;
 }
 
 var LeagueTable = React.createClass({
@@ -51,12 +41,11 @@ var LeagueTable = React.createClass({
 
 
   render: function () {
-    const swapPositions = this.swapPositions;
     const updateTeamname = this.updateTeamname;
 
     var positionNodes = this.state.positions.map(function (posIter) {
       return (
-        <Position position={posIter} key={posIter.position} swapPositions={swapPositions}
+        <Position position={posIter} key={posIter.position}
                   updateTeamname={updateTeamname}/>
       );
     });
@@ -75,38 +64,6 @@ var LeagueTable = React.createClass({
     );
   },
 
-  swapPositions: function (sourceTeamId, targetTeamId) {
-
-
-    let updatedPositions = this.state.positions;
-
-    const sourcePosition = findTeamPosition(sourceTeamId.sourceId, updatedPositions);
-    const targetPosition = findTeamPosition(targetTeamId, updatedPositions);
-
-    const sourceTeam = findTeam(sourceTeamId.sourceId, updatedPositions);
-    const targetTeam = findTeam(targetTeamId, updatedPositions);
-
-    const newTarget = {
-      position: targetPosition,
-      team: sourceTeam
-    };
-
-    const newSource = {
-      position: sourcePosition,
-      team: targetTeam
-    };
-
-    updatedPositions[targetPosition - 1] = newTarget;
-    updatedPositions[sourcePosition - 1] = newSource;
-
-    this.setState({
-        positions: updatedPositions,
-        newTeam: {}
-      }
-    );
-
-  },
-
 
   updateTeamname: function (team, updatedText) {
 
@@ -114,7 +71,6 @@ var LeagueTable = React.createClass({
 
     var position = findTeamPosition(team.id, positions);
 
-    //team.editing = false;
     team.name = updatedText;
 
     const enabledPosition = {
@@ -133,5 +89,5 @@ var LeagueTable = React.createClass({
 });
 
 
-export default DragDropContext(HTML5Backend)(LeagueTable);
+export default LeagueTable;
 

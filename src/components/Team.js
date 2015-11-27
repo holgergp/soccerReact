@@ -1,53 +1,14 @@
-import { DragSource } from 'react-dnd';
 import React, { PropTypes } from 'react';
-import { ItemTypes } from './Constants';
 import classNames  from 'classnames';
 
 import ContentEditable from  'react-wysiwyg';
-
-/**
- * Specifies the drag source contract.
- * Only `beginDrag` function is required.
- */
-const teamSource = {
-  beginDrag(props, monitor, component) {
-    // Return the data describing the dragged item
-    return {sourceId: component.props.team.id};
-  },
-
-  endDrag(props, monitor) {
-    //unused param component
-    if (!monitor.didDrop()) {
-      return;
-    }
-
-    // When dropped on a compatible target, do something
-    const sourceTeam = monitor.getItem();
-    const targetTeam = monitor.getDropResult();
-    props.swapPositions(sourceTeam, targetTeam.id);
-
-  }
-};
-
-/**
- * Specifies the props to inject into your component.
- */
-function collect(connect, monitor) {
-  return {
-    connectDragSource: connect.dragSource(),
-    isDragging: monitor.isDragging()
-  };
-}
 
 const propTypes = {
 
   positionNumber: PropTypes.number.isRequired,
   updateTeamname: PropTypes.func.isRequired,
-  team: PropTypes.object.isRequired,
+  team: PropTypes.object.isRequired
 
-  // Injected by React DnD:
-  isDragging: PropTypes.bool.isRequired,
-  connectDragSource: PropTypes.func.isRequired
 };
 
 function calculatePositionCssClass(positionNumber) {
@@ -79,11 +40,8 @@ var Team = React.createClass({
     const positionNumber = this.props.positionNumber;
     const updateTeamname = this.props.updateTeamname;
     const team = this.props.team;
-    // These two props are injected by React DnD,
-    // as defined by your `collect` function above:
-    const { connectDragSource } = this.props;
     const classes = classNames('col-md-12', 'btn', calculatePositionCssClass(positionNumber));
-    return connectDragSource(
+    return (
       <div className={ classes } style={{cursor: 'pointer'}}>
         <div>
           <ContentEditable
@@ -96,10 +54,10 @@ var Team = React.createClass({
             editing={this.props.team.editing}
             preventStyling
             noLinebreaks
-            />
+          />
         </div>
-      </div>
-    );
+      </div>)
+      ;
 
     function onChange(text) {
       updateTeamname(team, text)
@@ -112,7 +70,7 @@ var Team = React.createClass({
 
 Team.propTypes = propTypes;
 
-export default DragSource(ItemTypes.TEAM, teamSource, collect)(Team);
+export default Team;
 
 
 

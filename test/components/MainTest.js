@@ -43,21 +43,6 @@ describe('LeagueTable', () => {
 
   });
 
-  it('should swap two clubs', () => {
-
-    let root  = TestUtils.renderIntoDocument(<LeagueTable  />);
-
-    let oldFirst = root.refs.child.state.positions[0];
-    let oldSecond = root.refs.child.state.positions[1];
-
-    root.refs.child.swapPositions({sourceId:'BMG'},"BVB");
-
-    let newFirst = root.refs.child.state.positions[0];
-    let newSecond = root.refs.child.state.positions[1];
-    expect(oldFirst.team.id). to.equal(newSecond.team.id);
-    expect(oldSecond.team.id). to.equal(newFirst.team.id);
-
-  });
 });
 
 

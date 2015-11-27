@@ -45,7 +45,6 @@
     "null-loader": "^0.1.1",
     "open": "0.0.5",
     "phantomjs": "^1.9.18",
-    "react-dnd-test-backend": "^1.0.0",
     "react-hot-loader": "^1.2.9",
     "rimraf": "^2.4.3",
     "style-loader": "^0.12.3",
