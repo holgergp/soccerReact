@@ -9,7 +9,7 @@ I deploy the application in disted form, if you feel to dist the application you
 
 Access the webpage located at `http://localhost:8000/webpack-dev-server/`. But it should fire up automatically.
 
-A version can be seen [here:](http://soccerreact.herokuapp.com/ ) 
+A running version can be seen [here:](http://soccerreact.herokuapp.com/ ) 
 
 I prepared four separate branches, that represent different stages in the development of this sample.
  
