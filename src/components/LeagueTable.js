@@ -8,28 +8,10 @@ var LeagueTable = React.createClass({
 
 
   getInitialState: function () {
-    const defaultState = {
-      positions: SAMPLE_LEAGUE_TABLE,
-      newTeam: {}
+    return {
+      positions: SAMPLE_LEAGUE_TABLE
     };
-    if (_.isUndefined(localStorage.state)) {
-      return defaultState;
-
-    }
-    let localstate = JSON.parse(localStorage.state);
-
-    if (_.isUndefined(localstate)) {
-      return defaultState;
-    }
-    return localstate;
-
   },
-
-  componentDidUpdate: function () {
-    //unused params prevProps and prevState
-    localStorage.state = JSON.stringify(this.state);
-  },
-
 
   render: function () {
 
