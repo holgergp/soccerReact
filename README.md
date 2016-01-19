@@ -1,6 +1,7 @@
 [![Build Status](https://travis-ci.org/holgergp/soccerReact.svg?branch=master)](https://travis-ci.org/holgergp/soccerReact)
 # soccerReact
 Demo application to compare various client side mvc approaches. Using React.js
+I refer to this demo application in a blog post you find here: In [English](https://blog.codecentric.de/en/2016/01/road-testing-react-js/) and in [German ](https://blog.codecentric.de/2016/01/react-js-im-praxischeck/) 
 For the time being start the dev-server using `npm start`
 
 Access the webpage located at `http://localhost:8000/webpack-dev-server/`. But it should fire up automatically.
