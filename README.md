@@ -18,3 +18,5 @@ I prepared four separate branches, that represent different stages in the develo
  - [02_With_LocalStorage](https://github.com/holgergp/soccerReact/tree/02_WithLocalStorage): Added possibility to store state in the browsers local storage
  - [03_With_Editing](https://github.com/holgergp/soccerReact/tree/03_WithEditing): Added possibility to change a teams name
  - [04_With_DragAndDrop](https://github.com/holgergp/soccerReact/tree/04_WithDragAndDrop): Full fledged version that includes DragAndDrop
+
+I am porting this app to redux just as an exercise, you can find it [here](https://github.com/holgergp/soccerRedux).
